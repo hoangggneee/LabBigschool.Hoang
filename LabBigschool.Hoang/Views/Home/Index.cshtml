@@ -1,6 +1,16 @@
-﻿@{
+﻿@*@{
     ViewBag.Title = "Home Page";
 }
+<div class="row">
+    <ul>
+        @foreach (var course in Model)
+            {
+                <li>
+                    @course.DateTime - @course.Lecture.Name
+                </li>
+            }
+    </ul>
+</div>
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -28,4 +38,42 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
+</div>*@
+@model IEnumerable<LabBigschool.Hoang.Models.Course>
+    @{ 
+        ViewBag.Title = "Home Page";
+
+    }
+<div class="row">
+    <ul>
+        @foreach (var course in Model)
+            {
+                <li>
+                    @course.DateTime -@course.Lecturer.Name
+                </li>
+            }
+    </ul>
 </div>
+<ul class="course">
+    @foreach(var course in Model)
+            {
+                <li>
+                    <div class="date">
+                        <div class="month">
+                            @course.DateTime.ToString("MM")
+                        </div>
+                        <div class="day">
+                            @course.DateTime.ToString("dd")
+                        </div>
+                    </div>
+                    <div class="details">
+                        <span class="lecture">
+                            @course.Lecturer.Name
+                        </span>
+                        <span class="category">
+                            @course.Category.Name
+                        </span>
+                    </div>
+                </li>
+            }
+</ul>

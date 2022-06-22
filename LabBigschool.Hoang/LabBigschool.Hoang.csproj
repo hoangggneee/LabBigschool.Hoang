@@ -48,14 +48,21 @@
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -168,13 +175,17 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\FromBodyAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IHttpActionResult.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalConfiguration.cs" />
     <Compile Include="Migrations\202206080206323_InitialModel.cs" />
     <Compile Include="Migrations\202206080206323_InitialModel.Designer.cs">
       <DependentUpon>202206080206323_InitialModel.cs</DependentUpon>
@@ -187,8 +198,29 @@
     <Compile Include="Migrations\202206080233326_PopulateCategoryTable.Designer.cs">
       <DependentUpon>202206080233326_PopulateCategoryTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206201343589_AddNameColumnToApplicationUser.cs" />
+    <Compile Include="Migrations\202206201343589_AddNameColumnToApplicationUser.Designer.cs">
+      <DependentUpon>202206201343589_AddNameColumnToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206201428376_IntinialModel1.cs" />
+    <Compile Include="Migrations\202206201428376_IntinialModel1.Designer.cs">
+      <DependentUpon>202206201428376_IntinialModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206210709451_IntinialModel3.cs" />
+    <Compile Include="Migrations\202206210709451_IntinialModel3.Designer.cs">
+      <DependentUpon>202206210709451_IntinialModel3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206210829557_AddAttendance.cs" />
+    <Compile Include="Migrations\202206210829557_AddAttendance.Designer.cs">
+      <DependentUpon>202206210829557_AddAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206220238375_ItinialModel5.cs" />
+    <Compile Include="Migrations\202206220238375_ItinialModel5.Designer.cs">
+      <DependentUpon>202206220238375_ItinialModel5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppicationUser.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
@@ -197,6 +229,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\CourseViewModel.cs" />
+    <Compile Include="ViewModel\FutureDate.cs" />
+    <Compile Include="ViewModel\ValidTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -281,6 +315,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206080233326_PopulateCategoryTable.resx">
       <DependentUpon>202206080233326_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206201343589_AddNameColumnToApplicationUser.resx">
+      <DependentUpon>202206201343589_AddNameColumnToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206201428376_IntinialModel1.resx">
+      <DependentUpon>202206201428376_IntinialModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206210709451_IntinialModel3.resx">
+      <DependentUpon>202206210709451_IntinialModel3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206210829557_AddAttendance.resx">
+      <DependentUpon>202206210829557_AddAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206220238375_ItinialModel5.resx">
+      <DependentUpon>202206220238375_ItinialModel5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
